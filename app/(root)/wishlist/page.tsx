@@ -6,6 +6,16 @@ import { getProductDetails } from "@/lib/actions/actions"
 import { useUser } from "@clerk/nextjs"
 import { use, useEffect, useState } from "react"
 
+interface ProductType {
+  _id: string;
+  title: string;
+  name: string; // Added `name` property
+  category: string;
+  price: number;
+  expense: number;
+  media: string[]; // Ensure media is an array of strings
+}
+
 const Wishlist = () => {
   const { user } = useUser()
 
@@ -50,7 +60,7 @@ const Wishlist = () => {
     }
   }, [signedInUser])
 
-  const updateSignedInUser = (updatedUser: UserType) => {
+  const updateSignedInUser:any = (updatedUser: UserType) => {
     setSignedInUser(updatedUser)
   }
 // console.log(updateSignedInUser.length)
