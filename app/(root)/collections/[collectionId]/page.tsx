@@ -2,7 +2,15 @@ import ProductCard from "@/components/ProductCard";
 import { getCollectionDetails } from "@/lib/actions/actions";
 import Image from "next/image";
 import React from "react";
-
+interface ProductType {
+  _id: string;
+  title: string;
+  name: string; // Added `name` property
+  category: string;
+  price: number;
+  expense: number;
+  media: string[]; // Ensure media is an array of strings
+}
 const CollectionDetails = async ({
   params,
 }: {
