@@ -6,12 +6,12 @@ import HeartFavorite from "./HeartFavorite";
 
 interface ProductType {
   _id: string;
-  name: string; // Required property
   title: string;
+  name: string; // Added `name` property
   category: string;
   price: number;
   expense: number;
-  media: string[];
+  media: string[]; // Ensure media is an array of strings
 }
 
 interface UserType {
@@ -23,7 +23,7 @@ interface ProductCardProps {
   updateSignedInUser?: (updatedUser: UserType) => void;
 }
 
-const ProductCard = ({ product, updateSignedInUser }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => { // Removed `updateSignedInUser` from here if not needed
   const fallbackImage = "/default-image.jpg"; // Replace with your actual fallback image path
 
   return (
@@ -31,14 +31,14 @@ const ProductCard = ({ product, updateSignedInUser }: ProductCardProps) => {
       <div className="relative">
         <Image
           src={product.media[0] || fallbackImage}
-          alt={product.name}
+          alt={product.title}
           width={250}
           height={300}
           className="h-[250px] relative z-10 object-cover hover:opacity-0 transition-opacity ease duration-500"
         />
         <Image
           src={product.media[1] || fallbackImage}
-          alt={product.name}
+          alt={product.title}
           width={220}
           height={300}
           className="h-[250px] object-cover absolute top-0 left-0"
@@ -53,10 +53,11 @@ const ProductCard = ({ product, updateSignedInUser }: ProductCardProps) => {
           <p className="text-sm text-gray-500">${product.expense}</p>
           <p className="text-lg font-bold">${product.price}</p>
         </div>
-        <HeartFavorite product={product} updateSignedInUser={updateSignedInUser} />
+        <HeartFavorite product={product} /> {/* Removed `updateSignedInUser` here */}
       </div>
     </Link>
   );
 };
 
 export default ProductCard;
+
