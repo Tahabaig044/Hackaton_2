@@ -2,7 +2,15 @@ import Gallery from "@/components/Gallery"
 import ProductCard from "@/components/ProductCard"
 import ProductInfo from "@/components/ProductInfo"
 import { getProductDetails, getRelatedProducts } from "@/lib/actions/actions"
-
+interface ProductType {
+  _id: string;
+  title: string;
+  name: string; // Added `name` property
+  category: string;
+  price: number;
+  expense: number;
+  media: string[]; // Ensure media is an array of strings
+}
 const ProductDetails = async ({ params }: { params: { productId: string }}) => {
   const productDetails = await getProductDetails(params.productId)
   const relatedProducts = await getRelatedProducts(params.productId)
