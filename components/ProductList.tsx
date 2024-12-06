@@ -1,5 +1,16 @@
 import { getProducts } from "@/lib/actions/actions";
 import ProductCard from "./ProductCard";
+interface ProductType {
+  _id: string;
+  name: any;
+  price: number;
+  image: string;
+  quantity?: number; // Optional quantity field
+  title: string;
+   category:string;
+    expense:number;
+     media:any;
+}
 
 const ProductList = async () => {
   const products = await getProducts();
