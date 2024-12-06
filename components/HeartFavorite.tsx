@@ -11,7 +11,7 @@ interface HeartFavoriteProps {
 
 interface ProductType {
   _id: string;
-  name: string;
+  // name: string;
   price: number;
 }
 
