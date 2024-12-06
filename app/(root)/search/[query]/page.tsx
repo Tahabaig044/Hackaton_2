@@ -1,6 +1,14 @@
 import ProductCard from '@/components/ProductCard'
 import { getSearchedProducts } from '@/lib/actions/actions'
-
+interface ProductType {
+  _id: string;
+  title: string;
+  name: string; // Added `name` property
+  category: string;
+  price: number;
+  expense: number;
+  media: string[]; // Ensure media is an array of strings
+}
 const SearchPage = async ({ params }: { params: { query: string }}) => {
   const searchedProducts = await getSearchedProducts(params.query)
 
